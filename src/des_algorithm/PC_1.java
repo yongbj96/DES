@@ -12,33 +12,16 @@ public class PC_1 {
 								14, 6, 61, 53, 45, 37, 29,
 								21, 13, 5, 28, 20, 12, 4};
 	
-	//PC-1전치(좌측순환이동 포함)
-	public static final int[] permutation(int[] parity_code) {
-		int[] result = new int[56];
-		int[] left = new int[28];
-		int[] right = new int[28];
-		int left_0=0, right_0=0;
-		
-		for(int z=0; z<56; z++) {
-			if(z==0) 
-				left_0 = parity_code[PC_1[z]-1];
-			else if(z<=27)
-				left[z-1] = parity_code[PC_1[z]-1];
-			else if(z==28)
-				right_0 = parity_code[PC_1[z]-1];
-			else
-				right[z-29] = parity_code[PC_1[z]-1];
-		}
-		left[27] = left_0;
-		right[27] = right_0;
-		
+	static int[] left = new int[28];
+	static int[] right = new int[28];
+	
+	//PC-1전치
+	public static final void permutation(int[] key_code_64bit) {
 		for(int z=0; z<56; z++) {
 			if(z<=27)
-				result[z] = left[z];
+				left[z] = key_code_64bit[PC_1[z]-1];
 			else
-				result[z] = right[z-28];
+				right[z-28] = key_code_64bit[PC_1[z]-1];
 		}
-		
-		return result;
 	}
 }
