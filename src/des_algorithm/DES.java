@@ -1,48 +1,38 @@
 package des_algorithm;
 
-import java.util.Scanner;
-
 public class DES {
 	
 	static int CYCLE = 1;
 	
-	@SuppressWarnings("resource")
+	static int[] text_left = new int[32];
+	static int[] text_right = new int[32];
+	
+	
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		char[] key = new char[7];
-		int[] key_code_64bit = new int[64];
 		int[] key_code_48bit = new int[48];
 		
-		//키 입력
-		while(true) {
-			System.out.print("what's your key?(Please, under 7 texts) : ");
-			String key_enter = scan.nextLine();
-			if(key_enter.length()<=0|key_enter.length()>7)
-				continue;
-			for(int z=0; z<key_enter.length(); z++) {
-				key[z] = key_enter.charAt(z);
-			}
-			break;
-		}
+		//키 생성, PC-1전치까지 연산
+		Make_Key.Create_Key();
 		
-		//키 -> 코드변환
-		key_code_64bit = transfer_code.transfer(key);
+		//평문입력, 8bits까지 연산
+		Make_plain_text.Plain_text();
 		
-		//PC-1전치 (void)
-		PC_1.permutation(key_code_64bit);
-		
+		//싸이클 연산
 		for(int z=1; z<=16; z++) {
-		//PC-2전치
-		key_code_48bit = PC_2.permutation();
+			
+			//PC-2전치
+			key_code_48bit = PC_2.permutation();
 		
-			System.out.println("====="+(CYCLE-1)+"회 사이클 암호문입니다. =====");
+			System.out.println("===== Cycle Number : "+CYCLE+" =====");
+			System.out.printf("Key%d: ", CYCLE);
 			for(int y=0; y<48; y++) {
 				System.out.print(key_code_48bit[y]);
 				if(y!=0&y%6==0)
 					System.out.print(" ");
 			}
 			System.out.println();
+			
+			CYCLE++;
 		}
-		
 	}
 }

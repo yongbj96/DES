@@ -12,16 +12,16 @@ public class PC_1 {
 								14, 6, 61, 53, 45, 37, 29,
 								21, 13, 5, 28, 20, 12, 4};
 	
-	static int[] left = new int[28];
-	static int[] right = new int[28];
+	static int[] key_left = new int[28];
+	static int[] key_right = new int[28];
 	
 	//PC-1전치
 	public static final void permutation(int[] key_code_64bit) {
 		for(int z=0; z<56; z++) {
 			if(z<=27)
-				left[z] = key_code_64bit[PC_1[z]-1];
+				key_left[z] = key_code_64bit[PC_1[z]-1];
 			else
-				right[z-28] = key_code_64bit[PC_1[z]-1];
+				key_right[z-28] = key_code_64bit[PC_1[z]-1];
 		}
 	}
 }

@@ -19,35 +19,34 @@ public class PC_2 {
 		
 		//좌측 순환이동 (1, 2, 9, 16일 때는 1회 이동)
 		if(DES.CYCLE==1 | DES.CYCLE==2 | DES.CYCLE==9 | DES.CYCLE==16) {
-			left_0 = PC_1.left[0];
-			right_0 = PC_1.right[0];
+			left_0 = PC_1.key_left[0];
+			right_0 = PC_1.key_right[0];
 			for(int z=0; z<27; z++) {
-				PC_1.left[z] = PC_1.left[z+1];
-				PC_1.right[z] = PC_1.right[z+1];
+				PC_1.key_left[z] = PC_1.key_left[z+1];
+				PC_1.key_right[z] = PC_1.key_right[z+1];
 			}
-			PC_1.left[27] = left_0;
-			PC_1.right[27] = right_0;
+			PC_1.key_left[27] = left_0;
+			PC_1.key_right[27] = right_0;
 		} else {
 			for(int y=0; y<=1; y++) {
-				left_0 = PC_1.left[0];
-				right_0 = PC_1.right[0];
+				left_0 = PC_1.key_left[0];
+				right_0 = PC_1.key_right[0];
 				for(int z=0; z<27; z++) {
-					PC_1.left[z] = PC_1.left[z+1];
-					PC_1.right[z] = PC_1.right[z+1];
+					PC_1.key_left[z] = PC_1.key_left[z+1];
+					PC_1.key_right[z] = PC_1.key_right[z+1];
 				}
-				PC_1.left[27] = left_0;
-				PC_1.right[27] = right_0;
+				PC_1.key_left[27] = left_0;
+				PC_1.key_right[27] = right_0;
 			}
 		}
 		
+		//키 통합
 		for(int z=0; z<56; z++) {
 			if(z<28)
-				key_code_56bit[z] = PC_1.left[z];
+				key_code_56bit[z] = PC_1.key_left[z];
 			else
-				key_code_56bit[z] = PC_1.right[z-28];
+				key_code_56bit[z] = PC_1.key_right[z-28];
 		}
-		
-		DES.CYCLE++;
 		
 		for(int z=0; z<48; z++) {
 			result[z] = key_code_56bit[PC_2[z]-1];
