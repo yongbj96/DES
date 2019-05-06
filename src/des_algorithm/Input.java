@@ -2,10 +2,10 @@ package des_algorithm;
 
 import java.util.Scanner;
 
-public class Make_Key {
+public class Input {
 	
 	@SuppressWarnings("resource")
-	public static final void Create_Key() {
+	public static final void Function() {
 		Scanner scan = new Scanner(System.in);
 		char[] key = new char[7];
 		int[] key_code_64bit = new int[64];

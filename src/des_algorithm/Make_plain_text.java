@@ -4,6 +4,15 @@ import java.util.Scanner;
 
 public class Make_plain_text {
 	
+	static final int[] IP = {58, 50, 42, 34, 26, 18, 10, 2,
+							60, 52, 44, 36, 28, 20, 12, 4,
+							62, 54, 46, 38, 30, 22, 14, 6,
+							64, 56, 48, 40, 32, 24, 16, 8,
+							57, 49, 41, 33, 25, 17, 9, 1,
+							59, 51, 43, 35, 27, 19, 11, 3,
+							61, 53, 45, 37, 29, 21, 13, 5,
+							63, 55, 47, 39, 31, 23, 15, 7};
+	
 	@SuppressWarnings("resource")
 	public static final void Plain_text() {
 		Scanner scan = new Scanner(System.in);
@@ -41,12 +50,12 @@ public class Make_plain_text {
 			}
 		}
 		
-		//64bit -> left_32bit, right_32bit
+		//IP전치, 64bit -> left_32bit, right_32bit
 		for(int z=0; z<64; z++) {
 			if(z<32)
-				DES.text_left[z] = text_code_64bit[z];
+				DES.text_left[z] = text_code_64bit[IP[z]-1];
 			else
-				DES.text_right[z-32] = text_code_64bit[z];
+				DES.text_right[z-32] = text_code_64bit[IP[z]-1];
 		}
 		
 		System.out.println("┌User's Plaintext┐");
