@@ -50,6 +50,14 @@ public class Make_plain_text {
 			}
 		}
 		
+		for(int z=0; z<64; z++)
+			System.out.print(text_code_64bit[z]);
+		
+//		절대적인 텍스트 입력 (**************************************************)
+//		String Abs_text = "";
+//		for(int z=0; z<64; z++)
+//			text_code_64bit[z] = (int)Abs_text.charAt(z);
+		
 		//IP전치, 64bit -> left_32bit, right_32bit
 		for(int z=0; z<64; z++) {
 			if(z<32)

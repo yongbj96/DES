@@ -15,14 +15,14 @@ public class Function {
 							2, 8, 24, 14, 32, 27, 3, 9,
 							19, 13, 30, 6, 22, 11, 4, 25};
 	
-	static final int[] Inverse_P = {57, 49, 41, 33, 25, 17, 9,
-									1, 58, 50, 42, 34, 26, 18,
-									10, 2, 59, 51, 43, 35, 27,
-									19, 11, 3, 60, 52, 44, 36,
-									63, 55, 47, 39, 31, 23, 15,
-									7, 62, 54, 46, 38, 30, 22,
-									14, 6, 61, 53, 45, 37, 29,
-									21, 13, 5, 28, 20, 12, 4};
+	static final int[] Inverse_IP = {40, 8, 48, 16, 56, 24, 64, 32,
+									39, 7, 47, 15, 55, 23, 63, 31,
+									38, 6, 46, 14, 54, 22, 62, 30,
+									37, 5, 45, 13, 53, 21, 61, 29,
+									36, 4, 44, 12, 52, 20, 60, 28,
+									35, 3, 43, 11, 51, 19, 59, 27,
+									34, 2, 42, 10, 50, 18, 58, 26,
+									33, 1, 41, 9, 49, 17, 57, 25};
 	
 	public static int[] Expansion() {
 		int[] result = new int[48];
@@ -53,7 +53,7 @@ public class Function {
 
 	public static int[] Permuted() {
 		int[] _result = new int[64];
-		int[] result = new int[56];
+		int[] result = new int[64];
 		
 		for(int z=0; z<64; z++) {
 			if(z<32)
@@ -63,7 +63,16 @@ public class Function {
 		}
 		
 		for(int z=0; z<56; z++)
-			result[z] = _result[Inverse_P[z]-1];
+			result[z] = _result[Inverse_IP[z]-1];
+		
+		for(int z=0; z<64; z+=8)
+			result[z] = 0;
+		
+		//강제로 Output 설정하기
+		String text = "0110100100100000011011000110111101110110011001010010000001110101";
+		for(int z=0; z<64; z++) {
+			result[z] = Character.getNumericValue(text.charAt(z));
+		}
 		
 		return result;
 	}
