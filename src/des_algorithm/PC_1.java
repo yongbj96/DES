@@ -23,5 +23,16 @@ public class PC_1 {
 			else
 				key_right[z-28] = key_code_64bit[PC_1[z]-1];
 		}
+		
+		System.out.print("Key0: ");
+		for(int z=0; z<56; z++) {
+			if(z!=0&z%7==0)
+				System.out.print(" ");
+			if(z<28)
+				System.out.print(key_left[z]);
+			else
+				System.out.print(key_right[z-28]);
+		}
+		System.out.print("\n\n");
 	}
 }

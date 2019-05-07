@@ -45,7 +45,6 @@ public class DES {
 			text_left = text_right;
 			text_right = XOR_32bit;
 			
-			System.out.println();
 			System.out.println("===== Cycle Number : "+CYCLE+" =====");
 			
 			System.out.printf("Expansion R%d: ", CYCLE);
@@ -56,7 +55,7 @@ public class DES {
 			}
 			System.out.println();
 			
-			System.out.printf("Key%d: ", CYCLE);
+			System.out.printf("    Key%d   : ", CYCLE);
 			for(int y=0; y<48; y++) {
 				if(y!=0&y%6==0)
 					System.out.print(" ");
@@ -70,7 +69,7 @@ public class DES {
 					System.out.print(" ");
 				System.out.print(XOR_48bit[y]);
 			}
-			System.out.println();
+			System.out.print("\n\n");
 			
 			CYCLE++;
 		}

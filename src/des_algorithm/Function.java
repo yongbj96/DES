@@ -1,7 +1,7 @@
 package des_algorithm;
 
 public class Function {
-	static final int[] E = {32,1, 2, 3, 4, 5,
+	static final int[] E = {32, 1, 2, 3, 4, 5,
 							4, 5, 6, 7, 8, 9,
 							8, 9, 10, 11, 12, 13,
 							12, 13, 14, 15, 16, 17,
@@ -51,7 +51,7 @@ public class Function {
 		return result;
 	}
 
-	public static int[] Permuted() {
+	public static int[] Permuted() { //수정
 		int[] _result = new int[64];
 		int[] result = new int[64];
 		
@@ -62,17 +62,14 @@ public class Function {
 				_result[z] = DES.text_left[z-32];
 		}
 		
-		for(int z=0; z<56; z++)
+		for(int z=0; z<64; z++)
 			result[z] = _result[Inverse_IP[z]-1];
 		
-		for(int z=0; z<64; z+=8)
-			result[z] = 0;
-		
-		//강제로 Output 설정하기
-		String text = "0110100100100000011011000110111101110110011001010010000001110101";
-		for(int z=0; z<64; z++) {
-			result[z] = Character.getNumericValue(text.charAt(z));
-		}
+//		강제로 Output 설정하기
+//		String text = "0110100100100000011011000110111101110110011001010010000001110101";
+//		for(int z=0; z<64; z++) {
+//			result[z] = Character.getNumericValue(text.charAt(z));
+//		}
 		
 		return result;
 	}

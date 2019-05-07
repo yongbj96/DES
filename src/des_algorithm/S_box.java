@@ -42,36 +42,13 @@ public class S_box {
            7, 11,  4,  1,  9, 12, 14,  2,  0,  6, 10, 13, 15,  3,  5,  8, //33~48
            2,  1, 14,  7,  4, 10,  8, 13, 15, 12,  9,  0,  3,  5,  6, 11 }}; //49~64
 	
-	public static int[] function(int[] _Sbox_48bit) {
+	public static int[] function(int[] Sbox_48bit) {
 		int[] num_Sbox = {0, 0, 0, 0, 0, 0, 0, 0};
 		int[] result = new int[32];
-		int a=0, b=0;
 		
-		
-		for(int z=0; z<48; z++) {
-			a=z/6;
-			b=z%6;
-			switch(b) {
-			case 0:
-				num_Sbox[a]+=(_Sbox_48bit[a*6+b]*32);
-				break;
-			case 1:
-				num_Sbox[a]+=(_Sbox_48bit[a*6+b]*16);
-				break;
-			case 2:
-				num_Sbox[a]+=(_Sbox_48bit[a*6+b]*8);
-				break;
-			case 3:
-				num_Sbox[a]+=(_Sbox_48bit[a*6+b]*4);
-				break;
-			case 4:
-				num_Sbox[a]+=(_Sbox_48bit[a*6+b]*2);
-				break;
-			case 5:
-				num_Sbox[a]+=_Sbox_48bit[a*6+b];
-				break;
-			}
-		}
+		for(int z=0; z<8; z++)
+			for(int y=0; y<6; y++)
+				num_Sbox[z]+=(Sbox_48bit[z*6+y]*Math.pow(2, 5-y));
 		
 		return result;
 	}

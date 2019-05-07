@@ -27,16 +27,14 @@ public class Make_plain_text {
 				continue;
 			for(int z=0; z<text_enter.length(); z++) //평문의 길이를 수정할 수 있는 코드2 (현재 8bits)
 				text[z] = text_enter.charAt(z);
-			if(text_enter.length()<8) { //평문의 길이를 수정할 수 있는 코드3 (현재 8bits)
+			if(text_enter.length()<8) //평문의 길이를 수정할 수 있는 코드3 (현재 8bits)
 				for(int z=text_enter.length(); z<8; z++)
 					text[z] = ' ';
-			}
 			break;
 		}
 		
-		int count=0;
-		
 		//평문 -> 코드변환
+		int count=0;
 		for(int z=0; z<text.length; z++) {
 			int text_num = text[z];
 			for(int y=7; y>=0; y--) {
@@ -49,9 +47,13 @@ public class Make_plain_text {
 				count++;
 			}
 		}
-		
-		for(int z=0; z<64; z++)
+		System.out.print("Input Text: ");
+		for(int z=0; z<64; z++) {
+			if(z!=0&z%8==0)
+				System.out.print(" ");
 			System.out.print(text_code_64bit[z]);
+		}
+		System.out.print("\n\n");
 		
 //		절대적인 텍스트 입력 (**************************************************)
 //		String Abs_text = "";
@@ -66,13 +68,12 @@ public class Make_plain_text {
 				DES.text_right[z-32] = text_code_64bit[IP[z]-1];
 		}
 		
-		System.out.println("┌User's Plaintext┐");
 		//Plain_text_left 출력
-		System.out.print("L0 = ");
+		System.out.print("┌User's Plaintext┐\nL0 = ");
 		for(int z=0; z<32; z++) {
-			System.out.print(DES.text_left[z]);
-			if(z%8==7)
+			if(z!=0&z%7==0)
 				System.out.print(" ");
+			System.out.print(DES.text_left[z]);
 		}
 		System.out.println();
 		
