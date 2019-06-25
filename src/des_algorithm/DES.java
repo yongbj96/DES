@@ -73,8 +73,9 @@ public class DES {
 			
 			CYCLE++;
 		}
-		
+		//Inverse IP
 		Output_code = Function.Permuted();
+		//출력
 		Output.Function(Output_code);
 	}
 }

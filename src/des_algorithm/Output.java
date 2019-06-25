@@ -10,5 +10,9 @@ public class Output {
 		
 		for(int z=0; z<8; z++)
 			System.out.print(Output[z]+" ");
+		System.out.println();
+		
+		for(int z=0; z<8; z++)
+			System.out.print((char)Output[z]);
 	}
 }
